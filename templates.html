@@ -1,0 +1,42 @@
+{% if page == "home" %}
+<h1>🛍️ Welcome to Shopyaar</h1>
+<div class="products">
+{% for product in products %}
+  <div class="product">
+    <h3>{{ product.name }}</h3>
+    <p>₹{{ product.price }}</p>
+    <a href="/product/{{ product.pk }}/">View</a>
+  </div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% if page == "product" %}
+<h2>{{ product.name }}</h2>
+<p>{{ product.description }}</p>
+<p>Price: ₹{{ product.price }}</p>
+<a href="/add/{{ product.pk }}/">Add to Cart</a>
+{% endif %}
+
+{% if page == "cart" %}
+<h2>Your Cart 🛒</h2>
+{% for item in order.items.all %}
+  <p>{{ item.product.name }} - {{ item.quantity }} x ₹{{ item.product.price }} = ₹{{ item.total_price }}</p>
+{% endfor %}
+<p><strong>Total: ₹{{ order.total_price }}</strong></p>
+<a href="/checkout/">Checkout</a>
+{% endif %}
+
+{% if page == "checkout" %}
+<h2>✅ Order Placed Successfully!</h2>
+<a href="/">Back to Shop</a>
+{% endif %}
+
+{% if page == "auth" %}
+<h2>Create an Account</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Register</button>
+</form>
+{% endif %}
