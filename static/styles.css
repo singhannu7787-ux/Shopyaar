@@ -1,0 +1,5 @@
+body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; }
+.products { display: flex; gap: 20px; flex-wrap: wrap; }
+.product { background: #fff; padding: 15px; border: 1px solid #ccc; width: 200px; }
+a { text-decoration: none; color: #007bff; }
+a:hover { text-decoration: underline; }
